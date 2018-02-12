@@ -1,0 +1,13 @@
+.img-list-hover{
+	position: relative;
+	padding-bottom: 1rem;
+}
+.img-list-hover img{
+	padding: 10px;
+	border:1px solid #ddd;
+	margin-bottom: 10px;
+	width: 100%;box-sizing: border-box;
+}
+.photo-box{
+	box-sizing: border-box;
+}

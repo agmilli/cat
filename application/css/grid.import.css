@@ -1,0 +1,109 @@
+.cat-grid-inner{
+    font-size: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.cat-grid-inner ol,.cat-grid-inner ul {
+    list-style: none;
+    font-size: 0;
+}
+
+.cat-grid-inner [class *="cat-g-"]{display:inline-block;zoom:1;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;font-size:14px;padding-left:5px;padding-right:5px;vertical-align:top;}
+
+
+.cat-g-1{width:4.1667%;}
+.cat-g-2{width:8.3333%;}
+.cat-g-3{width:12.5%;}
+.cat-g-4{width:16.6667%;}
+.cat-g-5{width:20%;}
+.cat-g-6{width:25%;}
+.cat-g-7{width:29.1667%;}
+.cat-g-8{width:33.3333%;}
+.cat-g-9{width:37.5%;}
+.cat-g-10{width:41.6667%;}
+.cat-g-11{width:45.8333%;}
+.cat-g-12{width:50%;}
+.cat-g-13{width:54.1667%;}
+.cat-g-14{width:58.3333%;}
+.cat-g-15{width:62.5%;}
+.cat-g-16{width:66.6667%;}
+.cat-g-17{width:70.8333%;}
+.cat-g-18{width:75%;}
+.cat-g-19{width:79.1667%;}
+.cat-g-20{width:83.3333%;}
+.cat-g-21{width:87.5%;}
+.cat-g-22{width:91.6667%;}
+.cat-g-23{width:95.8333%;}
+.cat-g-24{width:100%;}
+
+/* 大屏幕 L*/
+@media (max-width:1200px){
+    .l-24{width:100%;}
+  /*  .l-24 + .l-24{margin-top: 20px}*/
+    .l-12{width:50%;}
+    .l-8{width:33.3333%;}
+    .l-6{width:25%;}
+    .l-5{width:20%;}
+
+    .cat-hidden-l{display:none!important;}
+    .cat-visible-l-block{display:block!important;}
+    .cat-visible-l-inline{display:inline!important;}
+    .cat-visible-l-inline-block{display:inline-block!important;}
+}
+
+/* 平板电脑和小屏电脑之间的分辨率 M */
+@media (max-width:1000px){
+    .m-24{width:100%;}
+    /*.m-24 + .m-24{margin-top: 20px}*/
+    .m-12{width:50%;}
+    .m-8{width:33.3333%;}
+    .m-6{width:25%;}
+    .m-5{width:20%;}
+
+    .cat-hidden-m{display:none!important;}
+    .cat-visible-m-block{display:block!important;}
+    .cat-visible-m-inline{display:inline!important;}
+    .cat-visible-m-inline-block{display:inline-block!important;}
+}
+
+/* 横向放置的手机和竖向放置的平板之间的分辨率 S*/
+@media (max-width:768px){
+    .cat-g-6{width:50%;}
+
+    .cat-g-4{width:50%;}
+    .cat-g-3{width:50%;}
+    .cat-g-2{width:50%;}
+    .s-24{width:100%;}
+   /* .s-24 + .s-24{margin-top: 20px}*/
+    .s-12{width:50%;}
+    .s-8{width:33.3333%;}
+    .s-6{width:25%;}
+    .s-5{width:20%;}
+
+    .cat-hidden-s{display:none!important;}
+    .cat-visible-s{display:block!important;}
+    .cat-visible-s-inline{display:inline!important;}
+    .cat-visible-s-inline-block{display:inline-block!important;}
+}
+
+/* 横向放置的手机及分辨率更小的设备 XS*/
+@media (max-width:600px){
+    .cat-g-12{width:100%;}
+    .cat-g-6{width:100%;}
+    .cat-g-8{width:100%;}
+    .cat-g-4{width:100%;}
+    .cat-g-3{width:100%;}
+    .cat-g-2{width:100%;}
+    .xs-24{width:100%;}
+   /* .xs-24 + .xs-24{margin-top: 20px}*/
+    .xs-12{width:50%;}
+    .xs-8{width:33.3333%;}
+    .xs-6{width:25%;}
+    .xs-5{width:20%;}
+    
+    .cat-hidden-xs{display:none!important;}
+    .cat-visible-xs{display:block!important;}
+    .cat-visible-xs-inline{display:inline!important;}
+    .cat-visible-xs-inline-block{display:inline-block!important;}
+}

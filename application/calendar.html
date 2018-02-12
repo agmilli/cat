@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,maximum-scale=1, maximum-scale=1" />
+	<title>猫咪-Calendar</title>
+	<link rel="icon" href="images/icon66.ico">
+	<script src="js/base.js"></script>
+	<link rel="stylesheet" href="http://at.alicdn.com/t/font_514441_wc0fam63mlu40a4i.css">
+	<link rel="stylesheet" href="css/pluggable-unit/dcalendar.picker.css">
+	<link rel="stylesheet" href="css/application.css">
+</head>
+<body>
+	<header class="header">
+		<nav>
+			<ul>
+				<li><a href="javascript:history.back()"><i class="iconfont icon-shiliangzhinengduixiang4"></i></a></li>
+				<!-- <li><img src="images/logo.png" alt=""></li> -->
+				<li>日历</li>
+				<li><i class="iconfont icon-1 i_click"></i>
+					<ul>
+						<li class="exit">退出登录</li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<section>
+		<div class="app-dcalendar">
+			<h3>日历-calendar</h3>
+			<table id="mycalendar" class="calendar"><thead><tr><th id="prev">‹</th><th colspan="5" id="currM">December 2017</th><th id="next">›</th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="pMDate"><span>26</span></td><td class="pMDate"><span>27</span></td><td class="pMDate"><span>28</span></td><td class="pMDate"><span>29</span></td><td class="pMDate"><span>30</span></td><td class="date"><span>1</span></td><td class="date"><span>2</span></td></tr><tr><td class="date"><span>3</span></td><td class="date"><span>4</span></td><td class="date"><span>5</span></td><td class="date"><span>6</span></td><td class="date"><span>7</span></td><td class="date"><span>8</span></td><td class="date"><span>9</span></td></tr><tr><td class="date"><span>10</span></td><td class="date"><span>11</span></td><td class="date"><span>12</span></td><td class="date"><span>13</span></td><td class="date"><span>14</span></td><td class="date"><span>15</span></td><td class="date"><span>16</span></td></tr><tr><td class="date"><span>17</span></td><td class="date"><span>18</span></td><td class="date"><span>19</span></td><td id="currDay" class="date"><span>20</span></td><td class="date"><span>21</span></td><td class="date"><span>22</span></td><td class="date"><span>23</span></td></tr><tr><td class="date"><span>24</span></td><td class="date"><span>25</span></td><td class="date"><span>26</span></td><td class="date"><span>27</span></td><td class="date"><span>28</span></td><td class="date"><span>29</span></td><td class="date"><span>30</span></td></tr><tr><td class="date"><span>31</span></td><td class="nMDate"><span>1</span></td><td class="nMDate"><span>2</span></td><td class="nMDate"><span>3</span></td><td class="nMDate"><span>4</span></td><td class="nMDate"><span>5</span></td><td class="nMDate"><span>6</span></td></tr><tr><td colspan="7" id="today">Today: Wednesday, December 20, 2017</td></tr></tbody></table>
+		</div>	
+	</section>
+	<footer>
+		<p>版权所有：林银毫所有</p>
+	</footer>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<!-- banner插件 -->
+	<script src="js/swiper.min.js"></script>
+	<!-- 日历插件 -->
+	<script type="text/javascript" src="js/dcalendar.picker.js"></script>
+	<script src="js/main.js"></script>
+	<script>
+		//-------------日历插件--------------//
+$('#mydatepicker').dcalendarpicker(); 
+$('#mydatepicker2').dcalendarpicker({
+	format:'yyyy-mm-dd'
+}); 
+$('#mycalendar').dcalendar();
+	</script>
+</body>
+</html>

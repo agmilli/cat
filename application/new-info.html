@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,maximum-scale=1, maximum-scale=1" />
+	<title>猫咪-New</title>
+	<link rel="icon" href="images/icon66.ico">
+	<script src="js/base.js"></script>
+	<link rel="stylesheet" href="http://at.alicdn.com/t/font_514441_wc0fam63mlu40a4i.css">
+	<link rel="stylesheet" href="css/application.css">
+</head>
+<body class="index-panel">
+	<header class="header">
+		<nav>
+			<ul>
+				<li><a href="javascript:history.back()"><i class="iconfont icon-shiliangzhinengduixiang4"></i></a></li>
+				<!-- <li><img src="images/logo.png" alt=""></li> -->
+				<li>新闻</li>
+				<li><i class="iconfont icon-1 i_click"></i>
+					<ul>
+						<li class="exit">退出登录</li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<section>
+		<div class="contentbody">
+			
+		</div>
+	</section>
+	<footer>
+		<p>版权所有：来自于知乎</p>
+	</footer>
+	<p id="back-top" style="display: block;">
+		<a href="#top"><span></span></a>
+	</p>
+	<script src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+	<script src="js/main.js"></script>
+<script>
+	var id=window.location.href;
+	id=id.split('#');
+	console.log(id[1])
+    var url='https://zhihu-daily.leanapp.cn/api/v1/contents/'+id[1];
+    $.ajax({
+		url: url,
+		type: 'GET',
+		dataType: 'json',
+	})
+	.done(function(data) {
+		var link='<link rel="stylesheet" href="'+data.CONTENTS.css+'">';
+		var img='<div class="img-wrap"> <h1 class="headline-title">'+data.CONTENTS.title+'</h1> <span class="img-source">图片：'+data.CONTENTS.image_source+'</span> <img src='+data.CONTENTS.image+'> <div class="img-mask"></div> </div><p></p>';
+		$('link[href*=application]').before(link);
+		$('head').ready(function(){
+			$('.contentbody').append(data.CONTENTS.body);
+			$('.headline').html(img);
+		})
+	})
+	.fail(function() {
+		console.log("error");
+	});	
+	// 返回顶部
+	$(function () {
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 100) {
+				$('#back-top').fadeIn();
+			} else {
+				$('#back-top').fadeOut();
+			}
+		});
+		// scroll body to 0px on click
+		$('#back-top a').click(function () {
+			$('body,html').animate({
+				scrollTop: 0
+			}, 200);
+			return false;
+		});
+	});
+//$.getJSON(url, function(data) {
+//	console.log(data)
+//})
+</script>
+</body>
+</html>

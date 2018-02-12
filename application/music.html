@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,maximum-scale=1, maximum-scale=1" />
+	<title>猫咪-Mymusic</title>
+	<link rel="icon" href="images/icon66.ico">
+	<script src="js/base.js"></script>
+	<link rel="stylesheet" href="http://at.alicdn.com/t/font_514441_w4rjls0hbbpj5rk9.css">
+	<link rel="stylesheet" href="css/application.css">
+</head>
+<body class="index-panel">
+	<header class="header">
+		<nav>
+			<ul>
+				<li><a href="javascript:history.back()"><i class="iconfont icon-shiliangzhinengduixiang4"></i></a></li>
+				<!-- <li><img src="images/logo.png" alt=""></li> -->
+				<li>我的音乐</li>
+				<li><i class="iconfont icon-1 i_click"></i>
+					<ul>
+						<li class="exit">退出登录</li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<section class="scrollauto">
+		<div class="section-inner">
+			<div class="panel-box">
+				<div class="panel-hd">
+					<div class="search-box">
+					    <div class="search-input-wrap">
+					        <input class="tc-15-input-text search-input" placeholder="搜索关键词..." />
+					        <a href="#" role="button" class="btn-rm-txt" title="清空"><i class="iconfont icon-guanbi"></i></a>
+					    </div>
+					    <a class="search-btn" type="button"><i class="iconfont icon-tubiaosousuo"></i></a>
+					</div>
+				</div>
+				<div class="panel-bd">
+					<audio id="audio" src="music/I Wanted You.mp3"  >
+						<p>请升级你的浏览器</p>
+					</audio>
+					<ul class="search-list-info music-list">
+						<li src="music/I Wanted You.mp3">
+							<div class="music-num">
+								1
+							</div>
+							<div class="music-title">
+								I Wanted You
+							</div>
+							<div class="music-play">
+								<i class="iconfont icon-shipin4"></i>
+							</div>
+						</li>
+						<li src="music/chen1.mp3">
+							<div class="music-num">
+								2
+							</div>
+							<div class="music-title">
+								chen1.mp3
+							</div>
+							<div class="music-play">
+								<i class="iconfont icon-shipin4"></i>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="music-page">
+					<ul class="pagination">
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<p>版权所有：林银毫所有</p>
+	</footer>
+	<script src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+	<script src="js/main.js"></script>
+
+<script type="text/javascript">
+$(function(){
+	var page_i=1;
+	$('.search-btn').on('click', function(event) {
+		if($('.search-input').val()==0){
+			return false;
+		}
+		else{
+			var url='http://music.weiqianlong.com/list.php?_token=84b45ad88a5e8aba2fabe06d95ff3878&keyword='+$('.search-input').val()+'&page=1&rand';
+			$('.music-list').html('');
+			$.getJSON("http://query.yahooapis.com/v1/public/yql", {
+			    q: 'select * from json where url=\"'+url+'\"',
+			    format: "json"
+			}, function(data) {
+				var d=data.query.results.json;
+				var data=d.data.songs;
+				if(data){
+				    for (var i = 0; i < data.length; i++) {
+				    	var index=Number(i)+1;
+				    	var surl='http://dl.stream.qqmusic.qq.com/C100'+data[i].songmid+'.m4a?fromtag=46';
+				    	var s=data[i].singer.name;
+				    	console.log(typeof(s));
+				    	if(typeof(s)=='undefined'){
+				    		s=data[i].singer[0].name;
+				    	}
+				    	var str='<li src='+surl+' > <div class="music-num">'+index+' </div> <div class="music-title">'+s+' - '+data[i].songname+'</div> <div class="music-play"> <i class="iconfont icon-shipin4"></i> </div> </li>';
+				    	$('.music-list').append(str);	
+				    }
+				    $('.music-page >.pagination').html(d.pageinfo);
+				    pages();
+			    }
+			    else {
+			    	var str='<li><div class="music-fail">没有这个歌曲</div></div> </li>';
+				    $('.music-list').append(str);
+				    return;
+			    }
+			});
+		}
+	});
+    musicfn();
+	//歌曲切换
+	function musicfn(){
+		var Music = $("#audio")[0];//var Music = document.getElementById('aduio');
+		$(document).on('click','.music-play>i',function(){
+			src=$(this).parent().parent().attr('src');
+			$(this).parent().parent().addClass('active').siblings().removeClass('active','');
+			if(Music.paused){	
+				$('#audio').attr('src',src);
+				
+				Music.play();				
+				console.log(Music.duration+' 1 '+src+'   '+Music.startTime)
+			}else{
+				$('#audio').attr('src',src);
+				Music.play();
+			}
+		});
+	}
+	//分页
+	function pages(){
+		$('.music-page>.pagination>li').on('click', function(){
+		    $('.music-list').html('');
+		    page_i = $(this).attr('data-page');
+		    console.log(page_i)
+		    var url='http://music.weiqianlong.com/list.php?_token=84b45ad88a5e8aba2fabe06d95ff3878&keyword='+$('.search-input').val()+'&page='+page_i+'&rand';
+		    $.getJSON("http://query.yahooapis.com/v1/public/yql", {
+			    q: 'select * from json where url=\"'+url+'\"',
+			    format: "json"
+			}, function(data) {
+				var d=data.query.results.json;
+				var data=d.data.songs;
+			    for (var i = 0; i < data.length; i++) {
+			    	var index=Number(i)+1;
+			    	var surl='http://dl.stream.qqmusic.qq.com/C100'+data[i].songmid+'.m4a?fromtag=46';
+			    	var s=data[i].singer.name;
+			    	console.log(typeof(s));
+			    	if(typeof(s)=='undefined'){
+			    		s=data[i].singer[0].name;
+			    	}
+			    	var str='<li src='+surl+' > <div class="music-num">'+index+' </div> <div class="music-title">'+s+' - '+data[i].songname+'</div> <div class="music-play"> <i class="iconfont icon-shipin4"></i> </div> </li>';
+			    	$('.music-list').append(str);	
+			    }
+			    $('.music-page >.pagination').html(d.pageinfo);
+			    //分页
+				pages();
+			});
+	    })
+	}
+	// 清除
+	$('.icon-guanbi').on('click', function(event) {
+		$('.search-input').val('');
+		/* Act on the event */
+	});
+	//回车时，默认是搜索
+	document.onkeydown=function(event){
+		if(window.event.keyCode == 13){
+	  		if ($('.search-btn')!=null){
+	   			$('.search-btn').click();
+	   		}	
+		}
+	}
+});
+</script>
+
+</body>
+</html>

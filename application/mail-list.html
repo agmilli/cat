@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,maximum-scale=1, maximum-scale=1" />
+	<title>猫咪-Mail_list</title>
+	<link rel="icon" href="images/icon66.ico">
+	<script src="js/base.js"></script>
+	<link rel="stylesheet" href="http://at.alicdn.com/t/font_514441_p37q3wdq76dvaemi.css">
+	<link rel="stylesheet" href="css/application.css">
+</head>
+<body class="index-panel">
+	<header class="header">
+		<nav>
+			<ul>
+				<li><a href="javascript:history.back()"><i class="iconfont icon-shiliangzhinengduixiang4"></i></a></li>
+				<!-- <li><img src="images/logo.png" alt=""></li> -->
+				<li>通讯录</li>
+				<li><i class="iconfont icon-1 i_click"></i>
+					<ul>
+						<li class="exit">退出登录</li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<section>
+		<div class="section-inner">
+			<div class="panel-box">
+				<div class="panel-hd">
+					<div class="search-box">
+					    <div class="search-input-wrap">
+					        <textarea class="tc-15-input-text search-input" placeholder="搜索关键词..."></textarea>
+					        <a href="#" role="button" class="btn-rm-txt" title="清空"><i class="iconfont icon-guanbi"></i></a>
+					    </div>
+					    <a class="search-btn" type="button" ><i class="iconfont icon-tubiaosousuo"></i></a>
+					</div>
+				</div>
+				<div class="panel-bd">
+					<ul class="search-list-info">
+						<li>等待查找...</li>
+					</ul>
+				</div>
+				<div class="panel-ft">
+					<button class="btn">通电</button>
+				</div>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<p>版权所有：林银毫所有</p>
+	</footer>
+	<script src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+	<script src="js/main.js"></script>
+<script>
+    $(document).keyup(function(){
+		var url='php/ajax.php?q='+$('.search-input').val();
+		var str=$('.search-input').val();
+		if($('.search-input').val().length==0){
+			return;
+		}else{
+			$.ajax({
+				url: url,
+				type: 'GET',
+				dataType: 'text',
+				data: '',
+			})
+			.done(function(d) {
+				$('.search-list-info li').text(d)
+			})
+		}		
+	})
+  </script>
+</body>
+</html>

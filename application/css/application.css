@@ -1,0 +1,200 @@
+@charset "utf-8";
+@import url(index.import.css);
+@import url(grid.import.css);
+@import url(app-dcalendar.import.css);
+@import url(mail-list.import.css);
+@import url(photo.import.css);
+@import url(map.import.css);
+@import url(new.import.css);
+@import url(video.import.css);
+@import url(music.import.css);
+html{background:#efefef;}
+body, html {
+    height: 100%;font-family: Arial, "微软雅黑", "宋体";
+}
+html,body,h1,h2,h3,h4,h5,h6,form,p,ul,li,section,nav,header,footer,input{margin:0;padding:0;font-weight: normal;font-size: 0.18rem;}
+body{
+	width: 7.5rem;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+i,b,strong,em{font-style: normal;font-weight: normal;}
+ol, ul { list-style: none; }
+a,img { border: none; text-decoration:none; }
+table { border-collapse: collapse; border-spacing: 0; }
+/* 重置安卓Pad下面input焦点状态白底的样式 */  
+input{
+   -webkit-user-modify: read-write-plaintext-only;
+   -webkit-tap-highlight-color:#d7e7f5;
+ /*  -webkit-appearance: none;*/
+}
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner{
+	border:none;padding:0;
+}
+.qf:after{content: " ";height: 0;width: 0;clear: both;overflow: hidden;}
+.qf{*zoom:1;}
+.fl{float: left;}
+.fr{float: right;}
+.hd{float: hidden;}
+.auto{margin-right: auto;margin-left: auto;}
+section{
+    position: absolute;
+    top: 1rem;
+    left: 0;
+    bottom: 1rem;
+    right: 0; 
+}
+.section-inner{
+	padding:20px;box-sizing: border-box;
+    position: relative;    height: 100%;
+}
+.section-inner-nobottom{
+    padding-bottom: 0;
+}
+.panel{
+
+}
+.panel-hd{
+	margin-bottom: 20px;
+}
+.panel-bd{
+	
+}
+.panel-ft{
+	margin-top: 20px;
+	padding-top: 10px;
+	border-top:1px solid #ddd;
+}
+.btn {
+    height: 30px;
+    min-width: 24px;
+    padding: 0 20px;
+    background: #006eff;
+    color: #fff;
+    border: 1px solid #006eff;
+    line-height: 30px;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    outline: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-size: 12px;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+/*返回顶部*/ 
+#back-top {
+    position: fixed;
+    bottom: 1.3rem;
+    right: 0.4rem;
+    display: none;
+}
+
+#back-top a {
+    
+    display: block;
+    text-align: center;
+    font: 11px/100% Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #bbb;
+
+    /* transition */
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    transition: 1s;
+}
+#back-top a:hover {
+    color: #000;
+}
+/* arrow icon (span tag) */
+#back-top span {
+    width: 0.8rem;
+    height: 0.8rem;
+    display: block;
+    margin-bottom: 7px;
+    background: #ddd url(../images/up-arrow.png) no-repeat center center;
+    background-size: 0.6rem 0.6rem;
+
+    /* rounded corners */
+    -webkit-border-radius: 0.1rem;
+    -moz-border-radius:0.1rem;
+    border-radius: 0.1rem;
+
+    /* transition */
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    transition: 1s;
+}
+#back-top a:hover span {
+    background-color: #777;
+}
+/*加载更多*/
+.new-more{
+  line-height: 0.8rem;
+  text-align: center;
+}
+.new-more .new-more-text{
+    display: inline-block;height: 18px;line-height: 18px;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+/*icon*/
+.n-loading-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-position: inherit;
+    background-image: url(../images/loading.svg);
+    -moz-animation: spin .6s infinite linear;
+    -webkit-animation: spin .6s infinite linear;
+    animation: spin .6s infinite linear;
+}
+/*滚动条*/
+.scrollauto{
+    overflow: auto;
+}
+.scrollauto::-webkit-scrollbar-thumb {
+    background: rgba(45, 39, 39, 0.16);
+    border-radius: 20px;
+}
+.scrollauto::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+.scrollauto::-webkit-scrollbar-track {
+    border-radius: 20px;
+}
+@-moz-keyframes spin {
+    0% {
+        -moz-transform: rotate(0deg)
+    }
+    100% {
+        -moz-transform: rotate(359deg)
+    }
+}
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg)
+    }
+
+    100% {
+        -webkit-transform: rotate(359deg)
+    }
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(359deg)
+    }
+}

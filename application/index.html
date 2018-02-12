@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,maximum-scale=1, maximum-scale=1" />
+	<title>猫咪-最初的你</title>
+	<link rel="icon" href="images/icon66.ico">
+	<script src="js/base.js"></script>
+	<link rel="stylesheet" href="http://at.alicdn.com/t/font_514441_wc0fam63mlu40a4i.css">
+	<!-- <link rel="stylesheet" href="http://www.swiper.com.cn/dist/css/swiper.min.css"> -->
+	<link rel="stylesheet" href="css/pluggable-unit/swiper.min.css">
+	<link rel="stylesheet" href="css/application.css">
+</head>
+<body class="index-panel">
+	<header class="header">
+		<nav>
+			<ul>
+				<li><a href="javascript:history.back()"><i class="iconfont icon-shiliangzhinengduixiang4"></i></a></li>
+				<!-- <li><img src="images/logo.png" alt=""></li> -->
+				<li>最初的你</li>
+				<li><i class="iconfont icon-1 i_click"></i>
+					<ul>
+						<li class="exit">退出登录</li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<section class="section scrollauto" >
+		<!-- Swiper -->
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide"><img src="images/banner1.jpg" alt=""></div>
+				<div class="swiper-slide"><img src="images/banner2.jpg" alt=""></div>
+				<div class="swiper-slide"><img src="images/banner2.jpg" alt=""></div>
+			</div>
+			<!-- Add Pagination -->
+			<div class="swiper-pagination"></div>
+			<!-- Add Arrows -->
+			<div class="swiper-button-next swiper-button-white"></div>
+			<div class="swiper-button-prev swiper-button-white"></div>
+		</div>
+		<nav >
+			<ul>
+				<li><a href="book.html"><p><i class="iconfont icon-shu2"></i></p>我的书</a></li>
+				<li><a href="video.html"><p><i class="iconfont icon-shipin5"></i></p>视频</a></li>
+				<li><a href="music.html"><p><i class="iconfont icon-yinle"></i></p>音乐</a></li>
+				<li><a href="calendar.html"><p><i class="iconfont icon-calendar"></i></p>日历</a></li>
+				<li><a href="mail-list.html"><p><i class="iconfont icon-liuyanban"></i></p>通讯录</a></li>
+				<li><a href="lyb.html"><p><i class="iconfont icon-lyb"></i></p>留言板</a></li>
+				<!-- <li><a href="getLogList.html"><p><i class="iconfont icon-leijishouru"></i></p>收入明显</a></li> -->
+				<li><a href="map.html"><p><i class="iconfont icon-ditudizhi"></i></p>地图</a></li>
+				<li><a href="photo.html"><p><i class="iconfont icon-zhaopian1"></i></p>照片墙</a></li>
+				<li><a href="new.html"><p><i class="iconfont icon-xinwen"></i></p>新闻</a></li>
+				<li style="border-bottom:0px;border-right:1px solid #eee;"><a href="setting.html"><p><i class="iconfont icon-shezhi"></i></p>设置</a></li>
+				<li style="border:0px;"></li>
+				<li style="border:0px;"></li>
+			</ul>
+		</nav>
+	</section>
+	<footer>
+		<p>版权所有：林银毫所有</p>
+	</footer>
+	<script src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+	<!-- <script src="http://www.swiper.com.cn/dist/js/swiper.min.js"></script> -->
+	<script src="js/swiper.min.js"></script>
+	<script src="js/main.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  </script>
+</body>
+</html>

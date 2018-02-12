@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,maximum-scale=1, maximum-scale=1" />
+	<title>猫咪-New</title>
+	<link rel="icon" href="images/icon66.ico">
+	<script src="js/base.js"></script>
+	<link rel="stylesheet" href="http://at.alicdn.com/t/font_514441_wc0fam63mlu40a4i.css">
+	<link rel="stylesheet" href="css/application.css">
+</head>
+<body class="index-panel">
+	<header class="header">
+		<nav>
+			<ul>
+				<li><a href="javascript:history.back()"><i class="iconfont icon-shiliangzhinengduixiang4"></i></a></li>
+				<!-- <li><img src="images/logo.png" alt=""></li> -->
+				<li>新闻</li>
+				<li><i class="iconfont icon-1 i_click"></i>
+					<ul>
+						<li class="exit">退出登录</li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<section class="scrollauto">
+		<div class="section-inner section-inner-nobottom">
+			<div class="new-list">
+				<!-- <a href="#" class="new-box" >
+					<div class="new-list-img">
+						<img src="https://pic1.zhimg.com/v2-6e306f1b08b59a4f0e10cb7ba651afe4.jpg">
+					</div>
+					<div class="new-list-info">
+						<p><strong>年底跳槽高峰期，跳槽的人升值了，谁赔了？</strong>
+						<time>20170102</time>
+						</p>
+					</div>
+				</a>
+				<a href="#" class="new-box" >
+					<div class="new-list-img">
+						<img src="https://pic1.zhimg.com/v2-6e306f1b08b59a4f0e10cb7ba651afe4.jpg">
+					</div>
+					<div class="new-list-info">
+						<p><strong>年底跳槽高峰期，跳槽的人升值了，谁赔了？</strong>
+						<time>20170102</time>
+						</p>
+					</div>
+				</a> -->
+			</div>
+			<div class="new-more">
+				<i class="n-loading-icon"></i><span class="new-more-text">加载更多...</span>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<p>版权所有：Agmilli所有</p>
+	</footer>
+	<p id="back-top" style="display: block;">
+		<a href="#top"><span></span></a>
+	</p>
+	<script src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+	<script src="js/main.js"></script>
+<script>
+	var sss=0;
+	var time;
+    var url='https://zhihu-daily.leanapp.cn/api/v1/last-stories'; 
+	data_require(url);
+	$('.new-more').click(function(event) {
+		T_time(sss);
+		sss++;
+		var url='https://zhihu-daily.leanapp.cn/api/v1/before-stories/'+time
+		data_require(url);
+	});
+	// 数据请求
+	function data_require(url){
+	    $.ajax({
+			url: url,
+			type: 'GET',
+			dataType: 'json',
+		})
+		.done(function(data) {
+			console.log(data.STORIES);
+			var newdata=data.STORIES.stories;
+			for(var i=0;i<newdata.length;i++){
+				var newstr='<a href="new-info.html#'+newdata[i].id+' " class="new-box" > <div class="new-list-img"> <img src='+newdata[i].images[0]+'> </div> <div class="new-list-info"> <p><strong>'+newdata[i].title+'</strong> <time>'+data.STORIES.date+'</time> </p> </div> </a>'
+				$('.new-list').append(newstr)
+			}
+		})
+		.fail(function() {
+			console.log("error");
+		});	
+	}
+	function T_time(s){
+		var d=new Date().getTime();
+		var dd=d-1000*60*60*24*sss;
+		var ddd=new Date(dd);
+		var ddy=ddd.getFullYear();//
+		var ddm=ddd.getMonth()+1;//月数
+		if(ddm<10){
+			ddm='0'+ddm;
+		}
+		dds=ddd.getDate();//日数
+		console.log(dds)
+		if(dds<10){
+			dds='0'+dds;
+		}
+		time=+''+ddy+ddm+dds;
+		console.log(time)
+	}
+	// 返回顶部
+	$('#back-top').hide();
+	$(function () {
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 100) {
+				$('#back-top').fadeIn();
+			} else {
+				$('#back-top').fadeOut();
+			}
+		});
+		// scroll body to 0px on click
+		$('#back-top a').click(function () {
+			$('body,html').animate({
+				scrollTop: 0
+			}, 200);
+			return false;
+		});
+	});
+//$.getJSON(url, function(data) {
+//	console.log(data)
+//})
+</script>
+</body>
+</html>
