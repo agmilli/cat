@@ -28,15 +28,15 @@
 		<div class="section-inner cat-grid-inner">
 			<div class="video-play-box">
 				<a href="javascript:;" id="todoPlay">
-                <iframe style="width: 100%;
-    height: 100%;" frameborder="0" style="" id="frameContent" _img="http://puui.qpic.cn/qqvideo_ori/0/p05505c05vd_228_128/0" src="http://v.qq.com/iframe/txp/player.html?vid=p05505c05vd&amp;amp;tiny=0&amp;amp;auto=0" ></iframe>
-                <img id="videoimg" src="http://puui.qpic.cn/qqvideo_ori/0/p05505c05vd_228_128/0"  alt="" width="305" height="155" style="display: none;">
-                <span id="logo" style="display: none;"></span>
-            </a>
+	                <iframe style="width: 100%;
+	    height: 100%;" frameborder="0" style="" id="frameContent"  src="http://v.qq.com/iframe/txp/player.html?vid=p05505c05vd" ></iframe>
+	                <img id="videoimg" src="http://puui.qpic.cn/qqvideo_ori/0/p05505c05vd_228_128/0"  alt="" width="305" height="155" style="display: none;">
+	                <span id="logo" style="display: none;"></span>
+	            </a>
 			</div>
 
 			<div class="video-list scrollauto">
-				<a href="#" class="video-box" >
+				<!-- <a href="#" class="video-box" >
 					<div class="video-list-img">
 						<img src="http://ossweb-img.qq.com//images//chanpin//lol//ziyunwang//shipinzhongxin//jingcaishipin.jpg">
 					</div>
@@ -45,94 +45,76 @@
 						<time>20170102</time>
 						</p>
 					</div>
-				</a>
-				<a href="#" class="video-box" >
-					<div class="video-list-img">
-						<img src="https://pic1.zhimg.com/v2-6e306f1b08b59a4f0e10cb7ba651afe4.jpg">
-					</div>
-					<div class="video-list-info">
-						<p><strong>年底跳槽高峰期，跳槽的人升值了，谁赔了？</strong>
-						<time>20170102</time>
-						</p>
-					</div>
-				</a>
-				<a href="#" class="video-box" >
-					<div class="video-list-img">
-						<img src="https://pic1.zhimg.com/v2-6e306f1b08b59a4f0e10cb7ba651afe4.jpg">
-					</div>
-					<div class="video-list-info">
-						<p><strong>年底跳槽高峰期，跳槽的人升值了，谁赔了？</strong>
-						<time>20170102</time>
-						</p>
-					</div>
-				</a>
-				<a href="#" class="video-box" >
-					<div class="video-list-img">
-						<img src="https://pic1.zhimg.com/v2-6e306f1b08b59a4f0e10cb7ba651afe4.jpg">
-					</div>
-					<div class="video-list-info">
-						<p><strong>年底跳槽高峰期，跳槽的人升值了，谁赔了？</strong>
-						<time>20170102</time>
-						</p>
-					</div>
-				</a>
-				<a href="#" class="video-box" >
-					<div class="video-list-img">
-						<img src="https://pic1.zhimg.com/v2-6e306f1b08b59a4f0e10cb7ba651afe4.jpg">
-					</div>
-					<div class="video-list-info">
-						<p><strong>年底跳槽高峰期，跳槽的人升值了，谁赔了？</strong>
-						<time>20170102</time>
-						</p>
-					</div>
-				</a>
+				</a> -->
 			</div>
 		</div>
 	</section>
 	<footer>
 		<p>版权所有：林银毫所有</p>
 	</footer>
-	
 	<script src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
 	<script src="js/main.js"></script>
-<script>
-// header("Access-Control-Allow-Origin: *");
-var url='http://apps.game.qq.com/lol/act/website2013/video.php?page=1i&r=0.884398277848959&_=1484646506003';
-// var url='http://apps.game.qq.com/lol/Go/video/videoInfo?p1=81341&type=jsonp&p2=MERGE';
-var ifurl='https://v.qq.com/iframe/txp/player.html?vid=p05505c05vd&amp;amp;tiny=0&amp;amp;auto=0';
 
-// data_require(url);
+<script>
+// var url='http://apps.game.qq.com/lol/act/website2013/video.php?page=1&type=json&p2=MERGE&videoObj';//lol视频链接一，没法解决跨域
+// var url='http://lol.qq.com/web201310/js/videodata/LOL_VIDEOLIST_IDX1.js?&type=json';//lol视频链接二，没法解决跨域
+
+// var twourl='http://apps.game.qq.com/lol/Go/video/videoInfo?p1=81341&type=json&p2=MERGE';//lol视频获取链接一或者二的数据id,再重这个链接找到视频链接
+
+var url='http://api.douban.com/v2/movie/top250';//豆瓣电影
+
+
 $(function(){
-    $.getJSON("http://query.yahooapis.com/v1/public/yql", {
-	    q: "select * from json where url=\"http://music.weiqianlong.com/list.php?_token=84b45ad88a5e8aba2fabe06d95ff3878&keyword=周杰伦&page=1&rand\"",
-	    format: "json"
-	}, function(data) {
-	    console.log(data)
-	});
+    $.ajax({
+        url: 'http://query.yahooapis.com/v1/public/yql',
+        dataType: 'jsonp',
+        data: {
+            q: 'select * from json where url=\"'+url+'\"',
+            format: "json"
+        },
+        success: function (data) {
+	        console.log(data)//跨域html代码放在results下，注意和json的区别
+	  //       var data=query.results.json.msg
+	  //       for(var i=0;i<data.vecVids.length;i++){
+			// 	var ifurl='https://v.qq.com/iframe/txp/player.html?vid='+data.vecVids[i].vid+'&amp;amp;tiny=0&amp;amp;auto=0';
+			// 	var newstr='<a src='+ifurl+' class="video-box" > <div class="video-list-img"> <img src='+data.vecVids[i].coverurl+'> </div> <div class="video-list-info"> <p><strong>'+data.vecVids[i].title+'</strong> <time>20170102</time> </p> </div> </a>'
+			// 	$('.video-list').append(newstr)
+			// }
+        }
+    });
 });
+data_require();
 // 数据请求
-function data_require(url){
+function data_require(){
+	// type=1/2,num1~99,lol视频
+	var url='https://ncgi.video.qq.com/fcgi-bin/outside_related_vids_cgi?otype=json&strVid=b0353j8ursa&etype=3&iNum=99';
     $.ajax({
 		url: url,
 		type: 'GET',
-		dataType: 'string',
-		ContentType:'',
-		cache: false,  
-        processData: false,  
-        contentType: false
-
+        dataType: "jsonp",
+        jsonpCallback:'QZOutputJson',//使用jsonp时必须有这一行代码,其他填对应的函数名
 	})
 	.done(function(data) {
-		// console.log(data.STORIES);
-		// var newdata=data.STORIES.stories;
-		// for(var i=0;i<newdata.length;i++){
-		// 	var newstr='<a href="new-info.html#'+newdata[i].id+' " class="video-box" > <div class="video-list-img"> <img src='+newdata[i].images[0]+'> </div> <div class="video-list-info"> <p><strong>'+newdata[i].title+'</strong> <time>'+data.STORIES.date+'</time> </p> </div> </a>'
-		// 	$('.video-list').append(newstr)
-		// }
+		console.log(data);
+		for(var i=0;i<data.vecVids.length;i++){
+			var ifurl='https://v.qq.com/iframe/txp/player.html?vid='+data.vecVids[i].vid;
+			var newstr='<a href="javascript:void(0);" src='+ifurl+' class="video-box" > <div class="video-list-img"> <img src='+data.vecVids[i].coverurl+'> </div> <div class="video-list-info"> <p><strong>'+data.vecVids[i].title+'</strong> <time>20170102</time> </p> </div> </a>'
+			$('.video-list').append(newstr)
+		}
 	})
 	.fail(function() {
-		console.log("error");
+		console.log('error');
 	});	
+	//视频切换
+	videofn();
+	function videofn(){
+		var Video = $("#frameContent")[0];//var Music = document.getElementById('aduio');
+		$(document).on('click','.video-box',function(){
+			src=$(this).attr('src');
+			Video.src=src;
+			console.log(src)
+		});
+	}
 }
 </script>
 </body>

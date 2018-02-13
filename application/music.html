@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,maximum-scale=1, maximum-scale=1" />
 	<title>猫咪-Mymusic</title>
-	<link rel="icon" href="./images/icon66.ico">
+	<link rel="icon" href="images/icon66.ico">
 	<script src="./js/base.js"></script>
 	<link rel="stylesheet" href="http://at.alicdn.com/t/font_514441_w4rjls0hbbpj5rk9.css">
 	<link rel="stylesheet" href="./css/application.css">
@@ -127,7 +127,7 @@ $(function(){
 			$(this).parent().parent().addClass('active').siblings().removeClass('active','');
 			if(Music.paused){	
 				$('#audio').attr('src',src);
-				
+
 				Music.play();				
 				console.log(Music.duration+' 1 '+src+'   '+Music.startTime)
 			}else{
