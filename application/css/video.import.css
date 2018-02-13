@@ -14,10 +14,11 @@
 }
 .video-list{
 	position: absolute;
-	top:4.8rem;
+	top:0;
 	left: 20px;
 	right: 20px;
 	bottom: 0rem;
+  margin-top: 4.6rem;
 	padding-right: 10px;
 }
 .video-box {
@@ -28,7 +29,7 @@
 }
 .video-box .video-list-img {
   display: table-cell;
-  height: 1.4rem;
+  height: 1.1rem;
   width: 1.5rem;
 }
 .video-box .video-list-img img{
@@ -52,7 +53,7 @@
   /*line-clamp:3;*/
   /*box-orient: vertical;*/
   text-align: left;
-  height: 1.1rem;
+  height: 0.8rem;
   line-height: 0.38rem;
   width: 100%;
   color: #444;
